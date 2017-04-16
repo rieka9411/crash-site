@@ -1,0 +1,3 @@
+-- Static Content
+local CONTENT = {
+					rules = {"=== Server Rules ===", " ", "Do not research Landfill before we go to the Silo", " ", " ", "Admins :", " ", "Rieka9411", "NoLive", "4ydo",
