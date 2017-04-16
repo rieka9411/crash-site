@@ -22,10 +22,10 @@ local FRAME_TABS = {
 
 -- Static Content
 local CONTENT = {
-					rules = {"=== Server Rules ===", " ", "Do not research Landfill before we go to the Silo", " ", " ", "Admins :", " ", "Rieka9411", "NoLive", "4ydo"},
-					comm = {"=== INFO ===", " ", "You are on an Escape Mode server", " ", "You play as a spaceship crash survivor who have to survive on a hostile planet", "The goal is to gathering ressources in order to go to the prebuilt silo, and attempt to launch a rocket", " ", "You start close to a small base which has limited space and ressources", "The first thing to do will be to make the base secured and prepare to go outside", "Do not attempt to go out the base before you have proper defences and weapons", "Use radar and check the map to decide where to push", "There are buildings all around the base which contains useful stuff", "Do not forget that you have limited space at the beginning, use it smartly", "You will also need to have an efficient ammo production to be able to defend and expand your base", "Keep an eye on biters evolution by typing /evolution", "Use the tags to show others what you are doing", " ", "Teamwork is the key here, communicate with others players and help as you can"},
-					resources = {"=== CHANGELOG ===", " ", "Version 2.4.3", " ", "Fixed logistic system could not be researchable", "Changed Showhealth settings", " ", "Version 2.4.2", " ", "Fixed tags", " ", "Version 2.4.1", " ", "Changed Showhealth settings", "Added Steam Group link in read me", " ", "Version 2.4", " ", "Added Read me", "Added Showhealth feature", "Improved Gravestone chest", "Reduced stone/coal in base from 1000 to 750", "Removed misplaced ore", "Added some decorations", "Added player list in read me", "Reduced oil barrel from 800 to 400", "Moved north iron patch", "Increased iron plate in foundry from 4.8k to 9.6k"},
-					about = {"=== ABOUT ===", "Welcome to the naked army crash site server!" " ", "=== SOFTMODS INSTALLED: === ", "Gravestone, Tags, Player List, ShowHealth", " ", "* CREDITS FOR CODING SOFTMODS AND SCENARIO: Chpich 3RA"}
+					rules = {"=== Server Rules ===", " ", "Do not research Landfill before we go to the Silo", " ", " ", "Admins :", " ", "Rieka9411", "NoLive", "4ydo"}, 
+					comm = {"=== INFO ===", " ", "You are on an Escape Mode server", " ", "You play as a spaceship crash survivor who have to survive on a hostile planet", "The goal is to gathering ressources in order to go to the prebuilt silo, and attempt to launch a rocket", " ", "You start close to a small base which has limited space and ressources", "The first thing to do will be to make the base secured and prepare to go outside", "Do not attempt to go out the base before you have proper defences and weapons", "Use radar and check the map to decide where to push", "There are buildings all around the base which contains useful stuff", "Do not forget that you have limited space at the beginning, use it smartly", "You will also need to have an efficient ammo production to be able to defend and expand your base", "Keep an eye on biters evolution by typing /evolution", "Use the tags to show others what you are doing", " ", "Teamwork is the key here, communicate with others players and help as you can"}, 
+					resources = {"=== CHANGELOG ===", " ", "Version 2.4.3", " ", "Fixed logistic system could not be researchable", "Changed Showhealth settings", " ", "Version 2.4.2", " ", "Fixed tags", " ", "Version 2.4.1", " ", "Changed Showhealth settings", "Added Steam Group link in read me", " ", "Version 2.4", " ", "Added Read me", "Added Showhealth feature", "Improved Gravestone chest", "Reduced stone/coal in base from 1000 to 750", "Removed misplaced ore", "Added some decorations", "Added player list in read me", "Reduced oil barrel from 800 to 400", "Moved north iron patch", "Increased iron plate in foundry from 4.8k to 9.6k"}, 
+					about = {"=== ABOUT ===", "Welcome to the unoffical Crash Site server (v2.4.3) ", " ", "Any problem/suggestion? or just want to discuss about the map? Join us :", "http://factorio.i-craft.de", " ", "This server is hosted by factorio.i-craft.de and owned by Rieka9411.", " ", "=== SOFTMODS INSTALLED: === ", "Gravestone, Tags, Player List, ShowHealth", " ", "* CREDITS FOR CODING SOFTMODS: 3RA"}
 				}
 
 -- On Player Join
@@ -158,7 +158,7 @@ end
 -- @param container - gui element to add to
 function draw_players(container)
     GUI.clear_element(container) -- Clear the current info before adding new
-
+    
     local table_name = "tbl_readme_players"
     container.add {type = "label", name = "lbl_player_tile", caption = "=== ALL TIME PLAYERS ==="}
     container.add {type = "table", name = table_name, colspan = 2}
@@ -166,13 +166,13 @@ function draw_players(container)
     container[table_name].style.maximal_width = 500
     container[table_name].add {type = "label", name = "lbl_hours", caption = "Time (h:m)"}
     container[table_name].add {type = "label", name = "lbl_name", caption = "Name"}
-
+    
     -- Copy player list into local list
     local player_list = {}
     for i, player in pairs(game.players) do
         table.insert(player_list, {name = player.name, online_time = player.online_time})
     end
-
+    
     -- Sort players based on time played
     table.sort(
         player_list,
@@ -180,7 +180,7 @@ function draw_players(container)
             return a.online_time > b.online_time
         end
     )
-
+    
     -- Add in gui list
     for i, player in pairs(player_list) do
         local total_min = Time.tick_to_min(player.online_time)
